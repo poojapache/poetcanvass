@@ -89,7 +89,6 @@ body {
   width: 450px; /* Adjust width as needed */
   height: auto; /* Maintain aspect ratio */
   transform: rotate(-10deg);
-  /* background-color: red; */
 }
 
 #kidsImg
@@ -206,4 +205,278 @@ body {
 {
   font-size: 13px;
   padding-bottom: 10px;
+}
+
+.navbar-container
+{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-baseline;
+  background-color: #333333;
+  width:100%;
+  padding: 20px;
+  box-shadow: 0px 5px 8px #888888;
+}
+
+.profile
+{
+  position: relative;
+  width: 100%;
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.profilePic
+{
+  height: 40px;
+  width:40px;
+  padding: 0;
+  margin: 0;
+}
+.list-container
+{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  
+}
+.list-container li
+{
+  display:inline-block;
+  padding-right: 20px;
+  padding-bottom: 0;
+}
+
+.sign-out
+{
+  padding:5px 20px;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.logo
+{
+  color:#F5F5DC;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 600;
+  font-size: 32px;
+}
+.profile-container
+{
+  height: 100%;
+  display: flex;
+}
+.side-navigation
+{
+  position: fixed; /* Changed from fixed to relative */
+  display:flex;
+  flex-direction: column;
+  padding:30px 0;
+  width:200px;
+  height: 100%;
+  box-shadow: 0px 5px 10px #333333;
+  background-color: #333333;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+.side-navigation-adjust
+{
+  width:200px;
+  height: 100%;
+}
+
+.side-navigation a
+{
+  /* display: block; */
+  padding: 20px 0;
+  padding-left: 20px;
+  color: #F5F5DC;
+  border-bottom:1px solid #F5F5DC;
+}
+
+.content-container
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height:100%;
+  padding: 50px;
+}
+
+.side-navigation a:hover
+{
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.active
+{
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+#searchbox-container
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.searchbox
+{
+  display: inline-block;
+  padding: 5px;
+  width: 500px;
+  border-radius: 5px 0 0 5px;
+  height:40px;
+}
+
+.searchIcon
+{
+  color:#333333;
+  background-color: #FFF;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 2px 5px 10px #333333;
+}
+
+.icon
+{
+  color: #F5F5DC;
+  padding-right: 5px;
+}
+
+.left-profile
+{
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+}
+.left-profile-container
+{
+  background-color: #D4AF37;
+  border-radius: 10px;
+  height: 500px;
+  padding:30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 2px 2px 5px #333333, -2px -2px 5px #333333;
+}
+
+.dashboard-pic
+{
+  height:200px;
+  width:200px;
+}
+
+.left-profile {
+  position: relative;
+  margin-left: 20px;
+}
+
+.user-full-name, .user-username, .user-about
+{
+  font-size: 30px;
+  font-weight: 600;
+  color: #333333;
+  padding: 10px 2px 0;
+  margin: 0;
+}
+
+.user-username, .user-about
+{
+  font-weight: 200;
+  padding: 0;
+  font-size: 20px;
+}
+
+.user-about
+{
+  height:150px;
+}
+
+.edit-profile-btn
+{
+  background-color: #333333;
+  color: #F5F5DC;
+  font-size: 20px;
+  bottom:0;
+  margin: 20px;
+  width:200px;
+  padding: 5px;
+}
+
+.right-profile-container
+{
+  width:700px;
+  padding: 0 30px;
+}
+
+.card-container
+{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.card
+{
+  width:50%;
+  height:200px;
+  background-color: #D4AF37;
+  border-radius: 10px;
+  padding: 10px 10px 0px 10px;
+  margin:0 20px;
+  box-shadow: 2px 2px 5px #333333, -2px -2px 5px #333333;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.cardName, .totalCounts
+{
+  font-size: 30px;
+  font-weight: 600;
+  padding:30px 15px 0 30px;
+  width: 100%;
+  text-align: left;
+}
+
+.totalCounts
+{
+  padding: 0 30px;
+  font-weight: 300;
+  font-size: 25px;
+}
+
+.collection-link
+{
+  flex-grow: 1;
+  color: #333333;
+  bottom: 0;
+}
+
+.analysis-chart
+{
+  padding: 20px;
+}
+
+.analysis-chart h1
+{
+  color: #333333;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 300;
 }
