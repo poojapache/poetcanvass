@@ -1,48 +1,52 @@
 'use client';
 
-import React,{useState} from 'react';
-import { useUser } from '@/app/Context/UserContext';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUserStore } from '../Store/userStore';
-import defaultPic from '../img/default.png'
+import defaultPic from '../img/default.png';
 import Image from 'next/image';
 import SearchIcon from '@mui/icons-material/Search';
 import FeedIcon from '@mui/icons-material/Feed';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import EditNoteIcon from '@mui/icons-material/EditNote';
 import HelpIcon from '@mui/icons-material/Help';
 import Dashboard from '@/app/Container/Dashboard';
 import Feed from '@/app/Container/Feed';
+import { useSelector, useDispatch } from 'react-redux';
+import activeTabChange from '../Actions/activeTabChange'
+import Collections from '../Container/Collections'
 
 export default function ProfilePage() {
-  // const { user } = useUser();
-  const {user} = useUserStore();
+  const { user } = useUserStore();
+  const activeTabFromRedux = useSelector((state:any) => state.activeTab);
+  const dispatch = useDispatch();
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState('Feed');
+  const [activeTab, setActiveTab] = useState(activeTabFromRedux || 'Feed');
 
   if (!user) {
     router.push('/login');
     return null;
   }
 
-  const handleTabClick = (tabName: any) => {
-    setActiveTab(tabName);
+  const handleTabClick = (tabName: string) => {
+    dispatch(activeTabChange(tabName));
+    setActiveTab(activeTabFromRedux);
   };
 
   return (
-    <div className='page profile' >
-      {/* <Image src={defaultPic} alt="DefaultPic"/>
-      <p>Username: {user.username}</p>
-      <p>Full Name: {user.fullName}</p> */}
+    <div className='page profile'>
       <div className='navbar-container'>
         <h1 className="logo">Poet Canvass</h1>
         <div id="searchbox-container">
-          <input type='search' className='searchbox' placeholder='Search poets & poems'></input>
-          <div><SearchIcon className='searchIcon' sx={{ fontSize: 50, padding: '5px', height:'40px' }}/></div>
+          <input type='search' className='searchbox' placeholder='Search poets & poems' />
+          <div>
+            <SearchIcon className='searchIcon' sx={{ fontSize: 50, padding: '5px', height: '40px' }} />
+          </div>
         </div>
         <div>
           <ul className='list-container'>
-            {activeTab !== 'Dashboard'?<li><Image src={defaultPic} alt="DefaultPic" className="profilePic"/></li>:''}
+            {activeTab !== 'Dashboard' && (
+              <li><Image src={defaultPic} alt="DefaultPic" className="profilePic" /></li>
+            )}
             <li><button className='btn sign-out'>Sign Out</button></li>
           </ul>
         </div>
@@ -50,24 +54,33 @@ export default function ProfilePage() {
 
       <div className='profile-container'>
         <div className='side-navigation'>
-          <a className={activeTab === 'Feed' ? 'active' : ''} 
-            onClick={() => handleTabClick('Feed')}><FeedIcon className='icon'/>Feed</a>
-          <a className={activeTab === 'Dashboard' ? 'active' : ''} 
-            onClick={() => handleTabClick('Dashboard')}><DashboardIcon className='icon'/>Dashboard</a>
-          {/* <a className={activeTab === 'MyWork' ? 'active' : ''} 
-            onClick={() => handleTabClick('MyWork')}><EditNoteIcon className='icon'/> My work</a> */}
-          <a className={activeTab === 'Help' ? 'active' : ''} 
-            onClick={() => handleTabClick('Help')}><HelpIcon className='icon'/>Help</a>
+          <a
+            className={activeTab === 'Feed' ? 'active' : ''}
+            onClick={() => handleTabClick('Feed')}
+          >
+            <FeedIcon className='icon' />Feed
+          </a>
+          <a
+            className={activeTab === 'Dashboard' ? 'active' : ''}
+            onClick={() => handleTabClick('Dashboard')}
+          >
+            <DashboardIcon className='icon' />Dashboard
+          </a>
+          <a
+            className={activeTab === 'Help' ? 'active' : ''}
+            onClick={() => handleTabClick('Help')}
+          >
+            <HelpIcon className='icon' />Help
+          </a>
         </div>
         <div className='side-navigation-adjust'></div>
         <div className='content-container'>
-          {activeTab === 'Feed'?<Feed/>:''}
-          {activeTab === 'Dashboard'?<Dashboard/>:''}
-          {/* {activeTab === 'MyWork'?<Dashboard/>:''} */}
-          {activeTab === 'Help'?<Dashboard/>:''}
+          {activeTab === 'Feed' && <Feed />}
+          {activeTab === 'Dashboard' && <Dashboard handleTabClick={handleTabClick}/>}
+          {activeTab === 'Collections' && <Collections/>}
+          {activeTab === 'Help' && <Feed/>}
         </div>
       </div>
-
     </div>
   );
 }

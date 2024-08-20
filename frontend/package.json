@@ -12,6 +12,7 @@
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.7",
+    "@reduxjs/toolkit": "^2.2.7",
     "argon2": "^0.40.3",
     "form-data": "^4.0.0",
     "formidable": "^3.5.1",

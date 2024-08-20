@@ -6,7 +6,7 @@ import LikeCard from '@/app/Components/LikeCard';
 import CollectionCard from '@/app/Components/CollectionCard';
 import MostPopularPoemChart from '@/app/Components/MostPopularPoemChart';
 
-export default function Dashboard()
+export default function Dashboard({handleTabClick})
 {
     const {user} = useUserStore();
     return(
@@ -20,8 +20,10 @@ export default function Dashboard()
             </div>
             <div className='right-profile-container'>
                 <div className='card-container'>
-                    <LikeCard/>
-                    <CollectionCard/>
+                    <LikeCard cardName={"Followers"}/>
+                    <LikeCard cardName={"Follows"}/>
+                    <LikeCard cardName={"Likes"}/>
+                    <CollectionCard handleTabClick={handleTabClick}/>
                 </div>
                     <div className='card-container'>
                         <MostPopularPoemChart/>
